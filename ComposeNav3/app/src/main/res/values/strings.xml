@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComposeNav3</string>
+    <string name="title_activity_nav_by_deeplink">NavByDeeplinkActivity</string>
+</resources>

@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.RemoteConfig" parent="Theme.MaterialComponents.Light" />
+</resources>

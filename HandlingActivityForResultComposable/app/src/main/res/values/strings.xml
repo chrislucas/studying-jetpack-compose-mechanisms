@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HandlingActivityForResultComposable</string>
+    <string name="send">Enviar</string>
+    <string name="title_activity_select_image">SelectImageActivity</string>
+    <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="title_activity_form_address">FormAddressActivity</string>
+</resources>

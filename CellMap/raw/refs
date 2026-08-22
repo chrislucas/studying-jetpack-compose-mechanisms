@@ -1,0 +1,21 @@
+CellBroadcast
+https://source.android.com/docs/core/ota/modular-system/cellbroadcast
+
+CellBroadcastAlertService
+https://android.googlesource.com/platform/packages/apps/CellBroadcastReceiver/+/refs/heads/main/src/com/android/cellbroadcastreceiver/CellBroadcastAlertService.java
+
+- Serviço utilizado para mandar mensagens de emergencia. Utilizado pela defesa civil para mandar
+mensagens em situações emergenciais sem depender de internet, utilizando das torres de telefonia
+
+
+Explorar essas classes para entender o que é possível fazer com essa api
+https://github.com/yuchuangu85/Android-system-apps/tree/master/apps/CellBroadcastReceiver/src/com/android/cellbroadcastreceiver
+https://github.com/yuchuangu85/Android-system-apps/tree/master/apps/CellBroadcastReceiver/tests/testapp
+
+
+Link de uma conversa com google AI
+https://share.google/aimode/kNTCYCAMT3M8w5tks
+
+
+OpenCellId API - uma base de dados com ID de torres de telefonia espalhadas no mundo
+https://opencellid.org/#zoom=18&lat=-23.530798&lon=-46.500767
