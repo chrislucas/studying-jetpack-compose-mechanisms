@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+            Entrypoint do módulo Carteira.
+            Responde ao deep link app://library/wallet.
+            exported=true porque é alvo de Intents vindos de outro componente/módulo.
+        -->
+        <activity
+            android:name=".WalletActivity"
+            android:exported="true"
+            android:label="Carteira">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="app"
+                    android:host="library"
+                    android:path="/wallet" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

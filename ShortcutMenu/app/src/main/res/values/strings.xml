@@ -7,4 +7,8 @@
 
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_fixing_settings_navigation">FixingSettingsNavigationActivity</string>
+    <string name="title_activity_settings_navigation3">SettingsNavigation3Activity</string>
+    <string name="title_activity_settings_navigation3_serialized">
+        SettingsNavigation3SerializedActivity
+    </string>
 </resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!--
+            Entrypoint do módulo Transferência.
+            Responde ao deep link app://library/transfer (com args opcionais
+            amount e toAccount na query string).
+        -->
+        <activity
+            android:name=".TransferActivity"
+            android:exported="true"
+            android:label="Transferência">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="app"
+                    android:host="library"
+                    android:path="/transfer" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

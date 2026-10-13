@@ -68,10 +68,12 @@
             android:name=".FixingSettingsNavigationActivity"
             android:exported="true"
             android:label="@string/title_activity_fixing_settings_navigation"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.ShortcutMenu"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <!-- registro do atalha -->
@@ -79,5 +81,18 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+        <activity
+            android:name=".ui.activity.nav3.simple.SettingsNavigation3Activity"
+            android:exported="false"
+            android:label="@string/title_activity_settings_navigation3"
+            android:theme="@style/Theme.ShortcutMenu"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.nav3.withserialization.SettingsNavigation3SerializedActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings_navigation3_serialized"
+            android:theme="@style/Theme.ShortcutMenu"
+            android:windowSoftInputMode="adjustResize" />
     </application>
+
 </manifest>

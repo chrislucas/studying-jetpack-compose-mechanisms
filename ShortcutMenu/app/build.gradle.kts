@@ -78,6 +78,8 @@ dependencies {
     // Contém as classes de renderização UI: NavDisplay e Scene
     implementation("androidx.navigation3:navigation3-ui:$nav3Version")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
     // 2. Integrações Recomendadas (Opcionais)
     // Permite que ViewModels sobrevivam apenas enquanto a tela existir na back stack
     implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:2.8.0")
