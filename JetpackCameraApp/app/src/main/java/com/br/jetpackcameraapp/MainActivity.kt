@@ -16,6 +16,10 @@ import com.br.jetpackcameraapp.ui.theme.JetpackCameraAppTheme
 /*
     https://github.com/google/jetpack-camera-app
     https://developer.android.com/jetpack/androidx/releases/camera
+
+
+    Projeto principal
+    https://share.gemini.google/Uqw0BkLR21TQ
  */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

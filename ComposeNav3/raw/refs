@@ -10,3 +10,15 @@ https://developer.android.com/guide/navigation/navigation-3/basics
 
 Understand and implement the basics
 
+
+
+----------------------------------------------------------------------------------------------------
+
+SharedFlow
+
+O que é SharingStarted.WhileSubscribed?
+    - Controle de aivação: Mantém o fluxo compartilhado ativo e escutando a origem
+    (upstream) apenas enquanto houver coletores (assinantes) ativos.
+
+    - Economia de recursos: QUando o último coletor é removido, o fluxo para de escutar
+    e a fonte para evitar

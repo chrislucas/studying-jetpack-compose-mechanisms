@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ShortcutMenu</string>
+    <string name="shortcut_short_label">Configurações</string>
+    <string name="shortcut_long_label">Abrir as configurações</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_fixing_settingsnavigation">FixingSettingsnavigationActivity
+    </string>
 </resources>

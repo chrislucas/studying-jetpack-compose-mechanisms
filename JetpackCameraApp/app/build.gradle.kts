@@ -46,7 +46,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // CameraX core library using the camera2 implementation
-    val camerax_version = "1.7.0-alpha02"
+    val camerax_version = "1.7.0-alpha03"
     // The following line is optional, as the core library is included indirectly by camera-camera2
     implementation("androidx.camera:camera-core:${camerax_version}")
     implementation("androidx.camera:camera-camera2:${camerax_version}")
@@ -60,6 +60,12 @@ dependencies {
     implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
     // If you want to additionally use the CameraX Extensions library
     implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+    // Google ML Kit - Reconhecimento de Texto (OCR)
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+
+    // TensorFlow Lite - Task Library para Linguagem Natural
+    implementation("org.tensorflow:tensorflow-lite-task-text:0.4.4")
     
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

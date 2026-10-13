@@ -13,8 +13,13 @@
         android:theme="@style/Theme.ShortcutMenu">
         <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ShortcutMenu"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SettingsActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_settings"
             android:theme="@style/Theme.ShortcutMenu"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -22,6 +27,60 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- registro do atalha -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+        <!--
+            Jetpack App Startup InitializationProvider:
+            Responsável por inicializar componentes na inicialização do app de forma centralizada e sem acoplamento.
+
+            Explicação dos Atributos da Tag <provider>:
+            - android:name: Define a classe do ContentProvider (InitializationProvider) instanciada
+              automaticamente pelo sistema Android antes de iniciar Activities ou Application.onCreate().
+            - android:authorities: Identificador único do provider no dispositivo (usa ${applicationId})
+              para evitar conflitos de autoridades entre aplicativos ou bibliotecas.
+            - android:exported="false": Restringe o uso do provider apenas internamente ao próprio app,
+              garantindo segurança contra acessos externos maliciosos.
+            - tools:node="merge": Instrução do Manifest Merger para combinar este provider com outros
+              declarados por dependências (bibliotecas) que também usam App Startup, evitando conflitos.
+        -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <!--
+                meta-data que registra o inicializador personalizado (SettingManagerInitializer).
+                - android:name: Caminho completo da classe que implementa Initializer<T>.
+                - android:value="androidx.startup": Define que esta meta-data pertence ao mecanismo do App Startup.
+            -->
+            <meta-data
+                android:name="com.br.shortcutmenu.core.SettingRepositoryInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity
+            android:name=".FixingSettingsNavigationActivity"
+            android:exported="true"
+            android:label="@string/title_activity_fixing_settingsnavigation"
+            android:theme="@style/Theme.ShortcutMenu"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- registro do atalha -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
         </activity>
     </application>
 

@@ -1,9 +1,9 @@
 [versions]
-agp = "9.3.1"
+agp = "9.4.1"
 coreKtx = "1.10.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.13.0"
 kotlin = "2.2.10"
@@ -14,6 +14,8 @@ lifecycleViewmodelNav3 = "2.12.0-alpha01"
 kotlinSerialization = "2.2.21"
 kotlinxSerializationCore = "1.9.0"
 material3AdaptiveNav3 = "1.3.0"
+appcompat = "1.8.0"
+material = "1.14.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +40,8 @@ androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runt
 androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 androidx-material3-adaptive-navigation3 = { group = "androidx.compose.material3.adaptive", name = "adaptive-navigation3", version.ref = "material3AdaptiveNav3" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

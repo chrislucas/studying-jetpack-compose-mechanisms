@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ComposeNav3"
 include(":app")
- 
+include(":build-logic")

@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    // Necessário se você usar @Serializable nas suas NavKeys (opcional, mas recomendado)
+    kotlin("plugin.serialization") version "2.0.0"
 }
 
 android {
@@ -26,6 +28,15 @@ android {
             }
         }
     }
+
+    /*
+        Configure product flavors 
+     */
+
+    productFlavors {
+
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -45,15 +56,39 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // Navigation Compose
-    implementation("androidx.navigation:navigation-compose:2.9.8")
+    implementation(libs.androidx.navigation.compose)
+    implementation("androidx.datastore:datastore-preferences:1.2.1")
+
+    val nav3_version = "1.2.0" // Versão estável mais recente (ou use 1.3.0-alpha02 para testar novos recursos)
+
+    // 1. Núcleo (Obrigatórios)
+    // Contém a API central: NavEntry, EntryProvider e DSLs
+    implementation("androidx.navigation3:navigation3-runtime:$nav3_version")
+    // Contém as classes de renderização UI: NavDisplay e Scene
+    implementation("androidx.navigation3:navigation3-ui:$nav3_version")
+
+    // 2. Integrações Recomendadas (Opcionais)
+    // Permite que ViewModels sobrevivam apenas enquanto a tela existir na back stack
+    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:2.8.0")
+
+    // Fornece SceneStrategies e metadados para telas adaptáveis (útil para o exemplo Mestre-Detalhe)
+    implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.0.0")
+
+    // Permite serialização segura das suas chaves de navegação
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
 
     // DataStore (para salvar as configurações)
-    implementation("androidx.datastore:datastore-preferences:1.2.1")
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.startup.runtime)
     testImplementation(libs.junit)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
+
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    // Robolectric + Compose UI Test
+    testImplementation("org.robolectric:robolectric:4.14.1")
 }
