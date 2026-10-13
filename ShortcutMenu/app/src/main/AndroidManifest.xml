@@ -55,8 +55,9 @@
 
             <!--
                 meta-data que registra o inicializador personalizado (SettingManagerInitializer).
-                - android:name: Caminho completo da classe que implementa Initializer<T>.
-                - android:value="androidx.startup": Define que esta meta-data pertence ao mecanismo do App Startup.
+                - android:name:Caminho completo da classe que implementa Initializer<T>.
+                - android:value="androidx.startup": define que este meta-data pertence ao
+                 mecanismo do App Startup.
             -->
             <meta-data
                 android:name="com.br.shortcutmenu.core.SettingRepositoryInitializer"
@@ -66,22 +67,17 @@
         <activity
             android:name=".FixingSettingsNavigationActivity"
             android:exported="true"
-            android:label="@string/title_activity_fixing_settingsnavigation"
+            android:label="@string/title_activity_fixing_settings_navigation"
             android:theme="@style/Theme.ShortcutMenu"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <!-- registro do atalha -->
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
-
         </activity>
     </application>
-
 </manifest>

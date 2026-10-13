@@ -2,7 +2,9 @@
     <string name="app_name">ShortcutMenu</string>
     <string name="shortcut_short_label">Configurações</string>
     <string name="shortcut_long_label">Abrir as configurações</string>
+    <string name="fixing_navigation_shortcut_long_label">FixNav - Abrir as configurações</string>
+    <string name="fixing_navigation_shortcut_short_label">FixNav - Configurações</string>
+
     <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_fixing_settingsnavigation">FixingSettingsnavigationActivity
-    </string>
+    <string name="title_activity_fixing_settings_navigation">FixingSettingsNavigationActivity</string>
 </resources>

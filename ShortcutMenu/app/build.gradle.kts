@@ -44,6 +44,18 @@ android {
     buildFeatures {
         compose = true
     }
+
+    testOptions {
+        unitTests {
+            // Faz os unit tests (Robolectric) usarem os recursos Android e o
+            // AndroidManifest MESCLADO do app, que inclui o manifest do artefato
+            // androidx.compose.ui:ui-test-manifest. Esse manifest declara a
+            // androidx.activity.ComponentActivity usada por createComposeRule().
+            // Sem isso, o Robolectric lança:
+            // "Unable to resolve activity for Intent ... androidx.activity.ComponentActivity".
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -57,15 +69,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // Navigation Compose
     implementation(libs.androidx.navigation.compose)
-    implementation("androidx.datastore:datastore-preferences:1.2.1")
 
-    val nav3_version = "1.2.0" // Versão estável mais recente (ou use 1.3.0-alpha02 para testar novos recursos)
+    val nav3Version = "1.2.0" // Versão estável mais recente (ou use 1.3.0-alpha02 para testar novos recursos)
 
     // 1. Núcleo (Obrigatórios)
     // Contém a API central: NavEntry, EntryProvider e DSLs
-    implementation("androidx.navigation3:navigation3-runtime:$nav3_version")
+    implementation("androidx.navigation3:navigation3-runtime:$nav3Version")
     // Contém as classes de renderização UI: NavDisplay e Scene
-    implementation("androidx.navigation3:navigation3-ui:$nav3_version")
+    implementation("androidx.navigation3:navigation3-ui:$nav3Version")
 
     // 2. Integrações Recomendadas (Opcionais)
     // Permite que ViewModels sobrevivam apenas enquanto a tela existir na back stack
@@ -80,15 +91,22 @@ dependencies {
     // DataStore (para salvar as configurações)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.startup.runtime)
+
     testImplementation(libs.junit)
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
 
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     // Robolectric + Compose UI Test
-    testImplementation("org.robolectric:robolectric:4.14.1")
+    testImplementation("org.robolectric:robolectric:4.17")
+    // Necessário para que o createComposeRule() consiga resolver a ComponentActivity
+    // host nos testes Robolectric (unit test). Sem isso, o manifest de teste
+    // (org.robolectric.default) não declara a ComponentActivity e lança
+    // "Unable to resolve activity for Intent ... androidx.activity.ComponentActivity".
+    testImplementation(libs.androidx.compose.ui.test.manifest)
 }

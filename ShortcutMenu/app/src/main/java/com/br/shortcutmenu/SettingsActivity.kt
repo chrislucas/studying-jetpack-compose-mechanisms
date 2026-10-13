@@ -44,8 +44,6 @@ import kotlinx.coroutines.launch
  */
 class SettingsActivity : ComponentActivity() {
 
-    private var navController: NavController? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -75,9 +73,7 @@ class SettingsActivity : ComponentActivity() {
                 }
 
 
-                val navToSettings = {
-                    navController.navigate("settings")
-                }
+                val navToSettings = { navController.navigate("settings") }
 
                 NavHost(navController = navController, startDestination = "home") {
                     composable("home") {
@@ -102,9 +98,7 @@ class SettingsActivity : ComponentActivity() {
 @Composable
 fun HomeScreen(isEnabled: Boolean, navToSettings: () -> Unit) {
     Scaffold(topBar = {
-        TopAppBar(
-            title = { Text("Home") }
-        )
+        TopAppBar(title = { Text("Home") })
     }) { innerPadding ->
         Column(
             modifier = Modifier
@@ -119,7 +113,7 @@ fun HomeScreen(isEnabled: Boolean, navToSettings: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = { navToSettings() }) {
-                Text("Configuracoes")
+                Text("Configurações")
             }
         }
     }

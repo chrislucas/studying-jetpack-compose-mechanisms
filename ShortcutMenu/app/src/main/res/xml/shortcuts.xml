@@ -8,4 +8,12 @@
             android:targetPackage="com.br.shortcutmenu"
             android:targetClass="com.br.shortcutmenu.SettingsActivity" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_manage">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.br.shortcutmenu"
+            android:targetClass="com.br.shortcutmenu.FixingSettingsNavigationActivity" />
+    </shortcut>
 </shortcuts>

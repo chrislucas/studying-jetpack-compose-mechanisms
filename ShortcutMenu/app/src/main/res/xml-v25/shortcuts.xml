@@ -8,7 +8,18 @@
         android:shortcutLongLabel="@string/shortcut_long_label">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.example.myapp"
+            android:targetPackage="com.br.shortcutmenu"
             android:targetClass="com.br.shortcutmenu.SettingsActivity" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="fixing_navigation_settings_shortcut"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/fixing_navigation_shortcut_short_label"
+        android:shortcutLongLabel="@string/fixing_navigation_shortcut_long_label"
+        android:icon="@android:drawable/ic_menu_manage">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.br.shortcutmenu"
+            android:targetClass="com.br.shortcutmenu.FixingSettingsNavigationActivity" />
     </shortcut>
 </shortcuts>

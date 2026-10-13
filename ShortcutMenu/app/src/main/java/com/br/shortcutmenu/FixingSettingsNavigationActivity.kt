@@ -6,8 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.br.shortcutmenu.ui.theme.ShortcutMenuTheme
 
-/*
-    Como fazer essa navegação usando navigation component ?
+/**
+ * @see SettingsActivity
+ *
+ * Na implementacao de navegacao de
+    Como fazer essa navegação usando navigation component?
     https://share.google/aimode/vnMkWqW4S8VgQYBjk
 
 
@@ -19,6 +22,7 @@ import com.br.shortcutmenu.ui.theme.ShortcutMenuTheme
     4. O menu com o botão Configurações vai aparecer. Clique nele.
     5. O app abrirá pulando direto para a tela de configurações. Altere o Switch do menu.
     6. Volte para a Home e note que o estado da configuração foi salvo e atualizado imediatamente!
+
  */
 class FixingSettingsNavigationActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
