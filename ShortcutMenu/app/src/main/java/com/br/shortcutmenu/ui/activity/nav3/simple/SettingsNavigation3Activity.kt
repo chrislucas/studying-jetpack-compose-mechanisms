@@ -19,9 +19,15 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.startup.AppInitializer
+import com.br.shortcutmenu.core.SettingRepository
+import com.br.shortcutmenu.core.SettingRepositoryInitializer
 import com.br.shortcutmenu.ui.theme.ShortcutMenuTheme
 
 /*
@@ -41,6 +47,7 @@ sealed interface Screen {
     object Home : Screen
     object Settings : Screen
 }
+
 class SettingsNavigation3Activity : ComponentActivity() {
 
     private val backStackScreen = mutableListOf<Screen>(Screen.Home)
@@ -50,7 +57,16 @@ class SettingsNavigation3Activity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ShortcutMenuTheme {
+                val context = LocalContext.current
+                val settingRepository = remember {
+                    AppInitializer.getInstance(context).initializeComponent(
+                        SettingRepositoryInitializer::class.java
+                    )
+                }
 
+                val isEnabled = settingRepository.configEnabled.collectAsStateWithLifecycle(
+                    initialValue = false
+                )
             }
         }
     }

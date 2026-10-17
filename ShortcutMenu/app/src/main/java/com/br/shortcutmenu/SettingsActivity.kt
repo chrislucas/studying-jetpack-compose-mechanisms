@@ -29,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -50,12 +49,12 @@ class SettingsActivity : ComponentActivity() {
         setContent {
             ShortcutMenuTheme {
                 val ctx = LocalContext.current
-                val settingManager = remember {
+                val settingRepository = remember {
                     AppInitializer.getInstance(ctx)
                         .initializeComponent(SettingRepositoryInitializer::class.java)
                 }
 
-                val isEnabled by settingManager.configEnabled.collectAsStateWithLifecycle(
+                val isEnabled by settingRepository.configEnabled.collectAsStateWithLifecycle(
                     initialValue = false
                 )
 
@@ -83,7 +82,7 @@ class SettingsActivity : ComponentActivity() {
                     composable("settings") {
                         SettingsScreen(isEnabled) { state ->
                             coroutineScope.launch {
-                                settingManager.saveConfig(state)
+                                settingRepository.saveConfig(state)
                             }
                         }
                     }
