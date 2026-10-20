@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.br.composablesstatelessandstateful.ui.stateful.StateBasedStatefulLoginScreen
 import com.br.composablesstatelessandstateful.ui.stateful.ValueBasedStatefulLoginScreen
 import com.br.composablesstatelessandstateful.ui.theme.ComposablesStatelessAndStatefulTheme
 
@@ -26,7 +28,11 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun FormComponent(modifier: Modifier = Modifier) {
-    ValueBasedStatefulLoginScreen(modifier = modifier)
+    /*
+        ValueBasedStatefulLoginScreen(modifier = modifier)
+     */
+    StateBasedStatefulLoginScreen(modifier = modifier)
 }

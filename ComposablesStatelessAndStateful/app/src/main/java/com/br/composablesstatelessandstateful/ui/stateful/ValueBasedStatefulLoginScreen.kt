@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -34,7 +35,8 @@ import com.br.composablesstatelessandstateful.utils.isValidEmail
 
 /*
     OldLoginScreen é stateful por ser o componente raiz da estrutura. Seus
-    componentes filhos são stateless e reportam a LoginScreen seu estado através de callbacks.
+    componentes filhos são stateless e reportam a LoginScreen seu
+    estado através de callbacks.
 
     Esse é um caso legítimo de uso de stateful e stateless. O Formulário representa
     um componente que vai ser usado num contexto específico e não sendo reutilizado,
@@ -91,6 +93,7 @@ fun ValueBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
             value = email,
             label = "Email",
             isError = showEmailError,
+            modifier = Modifier.testTag(ValueBasedLoginTestTags.EMAIL_FIELD),
             onValueChange = {
                 email = it
                 emailTouched = true
@@ -101,6 +104,7 @@ fun ValueBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
         ValueBasedPasswordTextField(
             value = password,
             isError = showPasswordError,
+            modifier = Modifier.testTag(ValueBasedLoginTestTags.PASSWORD_FIELD),
             onValueChange = {
                 password = it
                 passwordTouched = true
@@ -108,12 +112,16 @@ fun ValueBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
         )
 
         Spacer(modifier = Modifier.height(16.dp))
-        SubmitButton(isEnabled = isValidEmail && isValidPassword, onClick = {
-            Toast.makeText(
-                ctx, "Login realizado com sucesso!",
-                Toast.LENGTH_SHORT
-            ).show()
-        })
+        SubmitButton(
+            isEnabled = isValidEmail && isValidPassword,
+            modifier = Modifier.testTag(ValueBasedLoginTestTags.SUBMIT_BUTTON),
+            onClick = {
+                Toast.makeText(
+                    ctx, "Login realizado com sucesso!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        )
     }
 }
 
@@ -123,6 +131,7 @@ private fun ValueBasedCustomTextField(
     label: String,
     isError: Boolean,
     onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     OutlinedTextField(
         value = value,
@@ -130,6 +139,7 @@ private fun ValueBasedCustomTextField(
         label = { Text(label) },
         isError = isError,
         singleLine = true,
+        modifier = modifier,
     )
 }
 
@@ -137,7 +147,8 @@ private fun ValueBasedCustomTextField(
 private fun ValueBasedPasswordTextField(
     value: String,
     isError: Boolean,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var isPasswordVisible by remember { mutableStateOf(false) }
 
@@ -146,6 +157,7 @@ private fun ValueBasedPasswordTextField(
         onValueChange = onValueChange,
         label = { Text("Password") },
         singleLine = true,
+        modifier = modifier,
         // Alterna dinamicamente a transformação visual do texto
         visualTransformation = if (isPasswordVisible) {
             VisualTransformation.None
@@ -168,7 +180,10 @@ private fun ValueBasedPasswordTextField(
                 "Mostrar senha"
             }
 
-            IconButton(onClick = { isPasswordVisible = !isPasswordVisible }) {
+            IconButton(
+                onClick = { isPasswordVisible = !isPasswordVisible },
+                modifier = Modifier.testTag(ValueBasedLoginTestTags.TOGGLE_PASSWORD_VISIBILITY)
+            ) {
                 Icon(imageVector = icon, contentDescription = description)
             }
         },

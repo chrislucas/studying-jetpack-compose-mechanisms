@@ -59,8 +59,14 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.compose.material:material-icons-core")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.ui.test.junit4)
 
     testImplementation(libs.junit)
+    // Compose UI Test API nos unit tests (Robolectric). O BOM alinha a versão do
+    // ui-test-junit4 (createComposeRule, onNodeWithText, performTextInput, etc.)
+    // com o restante do Compose.
+    testImplementation(platform(libs.androidx.compose.bom))
+    testImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)

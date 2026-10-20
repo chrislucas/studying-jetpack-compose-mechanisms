@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicSecureTextField
@@ -18,6 +19,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -60,10 +62,7 @@ fun StateBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
     val isValidPassword = passwordState.text.length >= 6
     val showPasswordError = passwordState.text.isNotEmpty() && !isValidPassword
     var isPasswordVisible by remember { mutableStateOf(false) }
-
-
     val ctx = LocalContext.current
-
 
     Column(
         modifier = modifier
@@ -72,6 +71,8 @@ fun StateBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Text(text = "Acesse sua conta", style = MaterialTheme.typography.headlineLarge)
+        Spacer(modifier = Modifier.height(24.dp))
         StateBasedCustomTextField(
             valueState = emailState,
             label = "Email",
@@ -79,6 +80,7 @@ fun StateBasedStatefulLoginScreen(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         StateBasedPasswordTextField(
+            modifier = Modifier.fillMaxWidth(),
             passwordTextFieldState = PasswordTextFieldState(
                 textFieldState = passwordState,
                 isPasswordVisible = isPasswordVisible,
